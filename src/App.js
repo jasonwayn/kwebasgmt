@@ -9,8 +9,7 @@ import PostList from "./components/PostList";
 import CommentList from "./components/CommentList";  
 import CommentForm from "./components/CommentForm";  
 import Notifications from "./components/Notifications";
-
-
+import SavedPosts from "./components/SavedPosts";  
 
 const App = () => {
 
@@ -27,29 +26,31 @@ const App = () => {
       <div className="container mt-5">
         <Routes>
 
-          {/* ✅ `userId`를 `PostList`에 전달 */}
+          {/* 홈: 게시물 목록 */}
           <Route path="/" element={<PostList userId={currentUser?.id} />} />
 
-          {/* ✅ 로그인 & 회원가입 페이지 유지 */}
+          {/* 로그인 & 회원가입 */}
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
 
-          {/* ✅ 프로필 페이지 유지 */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          {/* 프로필 */}
+          <Route path="/profile/:id?" element={<Profile />} />
 
-          {/* ✅ 글쓰기 기능 추가 */}
+          {/* 글쓰기 */}
           <Route path="/write" element={<PostForm />} />
-          {/* ✅ 특정 게시물의 댓글 보기 */}
+
+          {/* 댓글 목록 */}
           <Route path="/comments/:postId" element={<CommentList />} />
 
-          {/* ✅ 특정 게시물에 댓글 작성 */}
-          <Route path="/comment/write/:postId" element={<CommentForm />} />  
+          {/* 댓글 작성 */}
+          <Route path="/comment/write/:postId" element={<CommentForm />} />
 
-          {/* ✅ 알람 */}
+          {/* 알림 페이지 */}
           <Route path="/notifications" element={<Notifications />} />
 
-          
+          {/* 저장된 게시물 보기 */}
+          <Route path="/saved" element={<SavedPosts userId={currentUser?.id} />} />  {/* 저장된 게시물 탭 */}
+
         </Routes>
       </div>
     </Router>

@@ -27,6 +27,16 @@ const Notifications = () => {
             .catch((err) => console.error("❌ 알림 처리 실패:", err));
     };
 
+    const renderNotificationMessage = (notification) => {
+        if (notification.type === "like") {
+            return <strong>{notification.message}</strong>;
+        } else if (notification.type === "comment") {
+            return <em>{notification.message}</em>;
+        } else {
+            return <span>{notification.message}</span>;
+        }
+    };
+
     return (
         <div>
             <h2>알림</h2>
@@ -34,8 +44,12 @@ const Notifications = () => {
                 <p>새로운 알림이 없습니다.</p>
             ) : (
                 notifications.map((notification) => (
-                    <div key={notification.id} className="alert alert-info" onClick={() => handleNotificationClick(notification.id)}>
-                        {notification.message}
+                    <div
+                        key={notification.id}
+                        className={`alert alert-${notification.type === "like" ? "success" : "info"}`}
+                        onClick={() => handleNotificationClick(notification.id)}
+                    >
+                        {renderNotificationMessage(notification)}
                     </div>
                 ))
             )}

@@ -42,6 +42,10 @@ const Navbar = () => {
                         알림 {notificationsCount > 0 ? `(${notificationsCount})` : ""}
                     </Link>
 
+                    <Link to="/saved">저장된 게시물</Link>  {/* 저장된 게시물 링크 추가 */}
+
+                    <Link to={`/profile/${user.id}`}>프로필</Link>  {/* 프로필 링크 추가 */}
+
                     <button onClick={() => { localStorage.removeItem("token"); window.location.reload(); }}>
                         로그아웃
                     </button>
