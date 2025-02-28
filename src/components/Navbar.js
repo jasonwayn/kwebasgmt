@@ -44,6 +44,9 @@ const Navbar = () => {
 
                     <Link to="/saved">저장된 게시물</Link>  {/* 저장된 게시물 링크 추가 */}
 
+                    {/* ✅ 서로이웃 목록 보기 */}
+                    <Link to="/friendships">서로이웃 목록</Link>  {/* 서로이웃 목록 링크 추가 */}
+
                     <Link to={`/profile/${user.id}`}>프로필</Link>  {/* 프로필 링크 추가 */}
 
                     <button onClick={() => { localStorage.removeItem("token"); window.location.reload(); }}>
